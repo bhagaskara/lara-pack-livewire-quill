@@ -15,5 +15,12 @@
             "name": "Bhagaskara",
             "email": "bhagaskaraliancer@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraPack\\LivewireQuill\\LivewireQuillProvider"
+            ]
+        }
+    }
 }
