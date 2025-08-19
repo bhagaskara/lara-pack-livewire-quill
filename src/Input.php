@@ -28,6 +28,6 @@ class Input extends Component
 
     public function render(): View
     {
-        return view('livewire-quill::input');
+        return view('lara-pack.livewire-quill::input');
     }
 }
