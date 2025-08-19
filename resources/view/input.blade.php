@@ -1,0 +1,69 @@
+<div wire:ignore>
+    <div id="{{ $quillId }}"></div>
+</div>
+
+@script
+    <script>
+        const defaultColors = [
+            '#000000', '#e60000', '#ff9900', '#ffff00', '#008a00', '#0066cc', '#9933ff', '#ffffff',
+            '#facccc', '#ffebcc', '#ffffcc', '#cce8cc', '#cce0f5', '#ebd6ff', '#bbbbbb', '#f06666',
+            '#ffc266', '#ffff66', '#66b966', '#66a3e0', '#c285ff', '#888888', '#a10000', '#b26b00',
+            '#b2b200', '#006100', '#0047b2', '#6b17b2', '#444444', '#5c0000', '#663d00', '#666600',
+            '#003700', '#002966', '#3d1466'
+        ];
+        const customColors = ['#ff5c62'];
+        const allColors = defaultColors.concat(customColors);
+
+        const quill = new Quill('#' + @js($quillId), {
+            theme: @js($theme),
+            modules: {
+                toolbar: [
+                    [{
+                        'header': [1, 2, 3, 4, 5, 6, false]
+                    }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{
+                        'color': allColors
+                    }, {
+                        'background': []
+                    }],
+                    [{
+                        'list': 'ordered'
+                    }, {
+                        'list': 'bullet'
+                    }],
+                ],
+                handlers: {
+                    'color': function(value) {
+                        if (value === 'custom-color') {
+                            var color = prompt('Masukkan kode warna heksadesimal (misalnya: #ff0000)');
+                            if (color) {
+                                this.quill.format('color', color);
+                            }
+                        } else {
+                            this.quill.format('color', value);
+                        }
+                    },
+                }
+            }
+        });
+
+        quill.root.innerHTML = $wire.get('value');
+
+        // Delay Init Listener to ensure Quill is ready and Listener Not Triggered Prematurely
+        setTimeout(() => {
+            let debounceTimer;
+            quill.on('text-change', (delta, oldDelta, source) => {
+                if (source == 'api') {
+
+                } else if (source == 'user') {
+                    let value = quill.root.innerHTML;
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(() => {
+                        @this.set('value', value);
+                    }, {{ $debounceTime }});
+                }
+            });
+        }, 1000);
+    </script>
+@endscript
