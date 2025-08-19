@@ -1,5 +1,7 @@
 {
     "name": "lara-pack/livewire-quill",
+    "description": "Livewire Component : Quill",
+    "license": "MIT",
     "require": {
         "livewire/livewire": "^3.0"
     },
