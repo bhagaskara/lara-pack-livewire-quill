@@ -33,18 +33,6 @@
                         'list': 'bullet'
                     }],
                 ],
-                handlers: {
-                    'color': function(value) {
-                        if (value === 'custom-color') {
-                            var color = prompt('Masukkan kode warna heksadesimal (misalnya: #ff0000)');
-                            if (color) {
-                                this.quill.format('color', color);
-                            }
-                        } else {
-                            this.quill.format('color', value);
-                        }
-                    },
-                }
             }
         });
 
