@@ -1,56 +1,56 @@
 # Lara-Pack Livewire Quill
 
-Lara-Pack Livewire Quill adalah komponen [Livewire 3 & 4](https://livewire.laravel.com/) untuk mempermudah integrasi _rich text editor_ [Quill.js](https://quilljs.com/) ke dalam aplikasi Laravel Anda.
+Lara-Pack Livewire Quill is a [Livewire 3 & 4](https://livewire.laravel.com/) component that simplifies the integration of the [Quill.js](https://quilljs.com/) rich text editor into your Laravel application.
 
-## Instalasi
+## Installation
 
-Tambahkan _package_ ini ke dalam aplikasi Laravel Anda menggunakan Composer:
+Add this package to your Laravel application using Composer:
 
 ```bash
 composer require lara-pack/livewire-quill
 ```
 
-> **Catatan:** Sesuaikan perintah di atas dengan _repository_ atau instalasi lokal dari _package_ ini.
+> **Note:** Adjust the command above according to your repository or local installation of this package.
 
-## Persiapan (Asset Quill.js)
+## Preparation (Quill.js Assets)
 
-Karena komponen ini bergantung pada library Quill.js, pastikan Anda sudah memasukkan CSS dan JavaScript bawaan Quill pada _layout_ utama aplikasi Anda (contohnya di `resources/views/layouts/app.blade.php`).
+Since this component depends on the Quill.js library, ensure you have included Quill's default CSS and JavaScript in your application's main layout (e.g., in `resources/views/layouts/app.blade.php`).
 
 ```html
 <head>
-  <!-- ... tag lainnya ... -->
+  <!-- ... other tags ... -->
 
   <!-- Theme included stylesheets -->
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
-  <!-- Jika ingin menggunakan tema 'bubble', tambahkan: -->
+  <!-- If you want to use the 'bubble' theme, add: -->
   <!-- <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet"> -->
 </head>
 <body>
-  <!-- ... konten body ... -->
+  <!-- ... body content ... -->
 
   <!-- Main Quill library -->
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 </body>
 ```
 
-## Penggunaan
+## Usage
 
-Gunakan tag `<livewire:...>` pada file Blade atau _views_ komponen Livewire Anda. Anda bisa langsung melakukan _binding_ data menggunakan `wire:model` berkat Livewire 3 `#[Modelable]`.
+Use the `<livewire:...>` tag in your Blade files or Livewire component views. You can perform direct data binding using `wire:model` thanks to Livewire 3's `#[Modelable]` feature.
 
-### Contoh Dasar
+### Basic Example
 
 ```html
 <livewire:lara-pack.livewire-quill wire:model="description" />
 ```
 
-### Konfigurasi Properti Tambahan
+### Additional Properties Configuration
 
-Anda juga dapat mengatur tema editor dan waktu jeda (_debounce_) menggunakan properti berikut:
+You can also configure the editor theme and the update delay (debounce) using the following properties:
 
-- `theme` (opsional): Tema editor Quill (`'snow'` atau `'bubble'`). **Default:** `'snow'`
-- `debounceTime` (opsional): Waktu penundaan pembaruan dalam milidetik (ms). **Default:** `500`
+- `theme` (optional): Quill editor theme (`'snow'` or `'bubble'`). **Default:** `'snow'`
+- `debounceTime` (optional): Update delay time in milliseconds (ms). **Default:** `500`
 
-**Contoh lengkap:**
+**Full example:**
 
 ```html
 <livewire:lara-pack.livewire-quill
@@ -60,13 +60,13 @@ Anda juga dapat mengatur tema editor dan waktu jeda (_debounce_) menggunakan pro
 />
 ```
 
-## Fitur Komponen
+## Component Features
 
-- Mendukung fitur `wire:model` (dua arah / _two-way data binding_).
-- Dapat digunakan lebih dari sekali (multiple instances) dalam satu halaman (ID digenerate menggunakan UUID).
-- Memiliki _debounce_ secara _built-in_ untuk menghemat proses _request_ ke server saat user sedang mengetik.
-- Mendukung kustomisasi warna toolbar dasar yang sudah disiapkan di dalam skrip komponen.
+- Supports `wire:model` (two-way data binding).
+- Can be used for multiple instances on a single page (IDs are generated using UUID).
+- Built-in debounce to optimize server requests while the user is typing.
+- Supports basic toolbar color customization pre-configured in the component script.
 
-## Lisensi
+## License
 
 [MIT License](LICENSE)
