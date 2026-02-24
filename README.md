@@ -1,6 +1,6 @@
 # Lara-Pack Livewire Quill
 
-Lara-Pack Livewire Quill adalah komponen [Livewire 3](https://livewire.laravel.com/) untuk mempermudah integrasi _rich text editor_ [Quill.js](https://quilljs.com/) ke dalam aplikasi Laravel Anda.
+Lara-Pack Livewire Quill adalah komponen [Livewire 3 & 4](https://livewire.laravel.com/) untuk mempermudah integrasi _rich text editor_ [Quill.js](https://quilljs.com/) ke dalam aplikasi Laravel Anda.
 
 ## Instalasi
 
